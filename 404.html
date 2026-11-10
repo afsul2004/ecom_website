@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AF ECOM</title>
+    <script>
+      // Single Page App redirect for GitHub Pages to HashRouter
+      (function() {
+        var currentPath = window.location.pathname;
+        var search = window.location.search || '';
+        var hash = window.location.hash || '';
+
+        // Match repository prefix e.g. /ecom_website
+        var repoMatch = currentPath.match(/^\/([^\/]+)(.*)$/);
+        if (repoMatch) {
+          var repo = '/' + repoMatch[1];
+          var subPath = repoMatch[2] || '/';
+          // Avoid double hash
+          if (!subPath.startsWith('/#')) {
+            window.location.replace(repo + '/#' + subPath + search + hash);
+            return;
+          }
+        }
+        window.location.replace('/#' + currentPath + search + hash);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to AF ECOM...</p>
+  </body>
+</html>
